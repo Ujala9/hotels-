@@ -62,28 +62,28 @@ app.get("/hotels", async(req,res) => {
     }
 })
 
-// async function readRestaurantByName(restaurantName){
-//     try {
-//        const restaurantByName = await Restaurant.find({name: restaurantName})
-//        return restaurantByName
-//     } catch (error){
-//         console.log(error)
-//     }
-// }
+async function readHotelByName(hotelName){
+    try {
+       const hotelByName = await Hotel.findOne({name: hotelName})
+       return hotelByName
+    } catch (error){
+        console.log(error)
+    }
+}
 
-// //Create an API with route "/restaurants/:restaurantName" to read a restaurant by its name. Test your API with Postman.
-// app.get("/restaurants/:restaurantName", async(req,res) => {
-//     try{
-//       const restaurant = await readRestaurantByName(req.params.restaurantName)
-//        if(restaurant.length != 0){
-//             res.json(restaurant)
-//         } else {
-//             res.status(404).json({error: "No restaurant found."})
-//         }
-//     }catch (error){
-//         res.status(500).json({error: "Failed to fetch restaurant."})
-//     }
-// })
+
+app.get("/hotel/:hotelName", async(req,res) => {
+    try{
+      const hotel = await readHotelByName(req.params.hotelName)
+       if(hotel){
+            res.json(hotel)
+        } else {
+            res.status(404).json({error: "No hotel found."})
+        }
+    }catch (error){
+        res.status(500).json({error: "Failed to fetch hotel."})
+    }
+})
 
 
 
