@@ -45,7 +45,7 @@ async function readAllHotel(){
       const allHotel = await Hotel.find()
       return allHotel
     }catch (error){
-        console.log(error)
+        throw error
     }
 }
 
@@ -58,7 +58,7 @@ app.get("/hotels", async(req,res) => {
             res.status(404).json({error: "No hotel found."})
         }
     }catch (error){
-        res.status(500).json({error: "Failed to fetch hotel."})
+        res.status(400).json({error: "Failed to fetch hotel."})
     }
 })
 
