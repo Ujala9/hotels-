@@ -24,7 +24,7 @@ async function createHotel(newHotel){
       const savedHotel = await hotel.save()
       return savedHotel
     } catch (error){
-      console.log("Error Saving Hotel", error)
+      throw error
     }
 }
 
