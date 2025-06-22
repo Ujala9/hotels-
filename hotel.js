@@ -36,7 +36,8 @@ app.post("/hotel", async (req,res) => {
         hotel: savedHotel,
     })
    }catch (error){
-    res.status(500).json({ error: "Failed to add hotel" })
+    console.error("Error in POST /hotels:", error.message);
+        res.status(400).json({error: error.message})
    }
 })
 
